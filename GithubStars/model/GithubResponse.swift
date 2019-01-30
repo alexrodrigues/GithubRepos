@@ -10,7 +10,7 @@ import Foundation
 
 struct GithubResponse:Codable {
     
-    var items: [GithubRepo]?
+    var items: [Repo]?
     
     private enum CodingKeys: String, CodingKey {
         case items

@@ -1,5 +1,5 @@
 //
-//  GithubRepo.swift
+//  Repo.swift
 //  GithubStars
 //
 //  Created by Alex Rodrigues on 29/01/19.
@@ -8,9 +8,13 @@
 
 import Foundation
 
-struct GithubRepo: Codable {
+struct Repo: Codable {
 
     var name: String?
+    var stars: Int?
     
-    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case stars = "stargazers_count"
+    }
 }

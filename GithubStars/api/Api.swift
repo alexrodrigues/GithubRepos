@@ -28,7 +28,7 @@ class Api  {
 //                completion(.error(self.ERROR_MESSAGE))
                 return
             }
-            print(String(data: dataReceived, encoding: String.Encoding.utf8))
+            
         }
     }
 }
