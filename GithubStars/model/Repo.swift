@@ -12,9 +12,11 @@ struct Repo: Codable {
 
     var name: String?
     var stars: Int?
+    var owner: Owner?
     
     private enum CodingKeys: String, CodingKey {
         case name
         case stars = "stargazers_count"
+        case owner
     }
 }

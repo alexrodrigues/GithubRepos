@@ -14,21 +14,26 @@ enum Result<T> {
     case error(String)
 }
 
-class Api  {
+class Api<T: Decodable>  {
     
     private let ERROR_MESSAGE = "Something went wrong on fetching repos"
     
-    func requestObject(endpoint: Endpoints) {
+    func requestObject(endpoint: Endpoints, completion: @escaping (Result<T>) -> (Void)) {
         guard let url = URL(string: endpoint.rawValue)  else {
-//            completion(.error(self.ERROR_MESSAGE))
+            completion(.error(self.ERROR_MESSAGE))
             return
         }
         request(url).responseJSON { (dataResponse) in
             guard let dataReceived = dataResponse.data else {
-//                completion(.error(self.ERROR_MESSAGE))
+                completion(.error(self.ERROR_MESSAGE))
                 return
             }
-            
+            do {
+                let objectResponse = try JSONDecoder().decode(T.self, from: dataReceived)
+                completion(.success(objectResponse))
+            } catch {
+                completion(.error(self.ERROR_MESSAGE))
+            }
         }
     }
 }
