@@ -14,10 +14,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var homeTableView: UITableView!
     private let HOME_CELL = "HomeCell"
     private var viewModels = [RepoViewModel]()
+    private var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+        setupRefreshControl()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -25,13 +27,14 @@ class ViewController: UIViewController {
         fetch()
     }
     
-    private func fetch() {
+    @objc private func fetch() {
         GithubService().performFetch { [weak self] (viewModels, errorMessage) in
             guard let `self` = self else { return }
             `self`.fillDataOnTableView(models: viewModels)
             `self`.activityIndicator.stopAnimating()
             `self`.homeTableView.isHidden = false
             `self`.homeTableView.reloadData()
+            if (`self`.refreshControl.isRefreshing) { `self`.refreshControl.endRefreshing() }
         }
     }
     
@@ -42,6 +45,20 @@ class ViewController: UIViewController {
     private func registerCells() {
         homeTableView.register(UINib(nibName: HOME_CELL, bundle: nil), forCellReuseIdentifier: HOME_CELL)
     }
+    
+    private func setupRefreshControl() {
+        if #available(iOS 10.0, *) {
+            homeTableView.refreshControl = refreshControl
+        } else {
+            homeTableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(ViewController.fetch), for: .valueChanged)
+    }
+    
+    @objc func refresh() {
+        fetch()
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
