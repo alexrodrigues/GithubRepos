@@ -20,14 +20,13 @@ struct RepoViewModel {
         return repository.owner?.profileImageUrl ?? ""
     }
     
-    var repoName: String {
+    var name: String {
         return repository.name ?? ""
     }
     
     var totalStars: Int {
         return repository.stars ?? 0
     }
-    
     
     init(repo: Repo) {
         repository = repo
