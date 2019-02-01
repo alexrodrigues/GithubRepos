@@ -27,13 +27,14 @@ class ViewController: UIViewController {
         fetch()
     }
     
-    private func fetch() {
+    @objc private func fetch() {
         GithubService().performFetch { [weak self] (viewModels, errorMessage) in
             guard let `self` = self else { return }
             `self`.fillDataOnTableView(models: viewModels)
             `self`.activityIndicator.stopAnimating()
             `self`.homeTableView.isHidden = false
             `self`.homeTableView.reloadData()
+            if (`self`.refreshControl.isRefreshing) { `self`.refreshControl.endRefreshing() }
         }
     }
     
@@ -51,7 +52,13 @@ class ViewController: UIViewController {
         } else {
             homeTableView.addSubview(refreshControl)
         }
+        refreshControl.addTarget(self, action: #selector(ViewController.fetch), for: .valueChanged)
     }
+    
+    @objc func refresh() {
+        fetch()
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
