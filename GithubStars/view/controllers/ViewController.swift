@@ -30,9 +30,19 @@ class ViewController: UIViewController {
         }
     }
     
-    
     private func fillDataOnTableView(models: [RepoViewModel]) {
         viewModels = models
+    }
+}
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
     }
 }
 
