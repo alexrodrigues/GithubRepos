@@ -14,10 +14,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var homeTableView: UITableView!
     private let HOME_CELL = "HomeCell"
     private var viewModels = [RepoViewModel]()
+    private var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+        setupRefreshControl()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +43,14 @@ class ViewController: UIViewController {
     
     private func registerCells() {
         homeTableView.register(UINib(nibName: HOME_CELL, bundle: nil), forCellReuseIdentifier: HOME_CELL)
+    }
+    
+    private func setupRefreshControl() {
+        if #available(iOS 10.0, *) {
+            homeTableView.refreshControl = refreshControl
+        } else {
+            homeTableView.addSubview(refreshControl)
+        }
     }
 }
 
