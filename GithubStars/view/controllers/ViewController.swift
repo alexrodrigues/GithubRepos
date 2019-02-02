@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func fillDataOnTableView(models: [RepoViewModel]) {
+    func fillDataOnTableView(models: [RepoViewModel]) {
         viewModels = models
     }
     
