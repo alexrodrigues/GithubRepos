@@ -13,7 +13,7 @@ class GithubResponseFactory {
     func factor(githubResponse: GithubResponse) -> [RepoViewModel] {
         var response = [RepoViewModel]()
         guard let repos = githubResponse.items else { return [RepoViewModel]() }
-        response = repos.prefix(10).map { RepoViewModel(repo: $0) }
+        response = repos.map { RepoViewModel(repo: $0) }
         return response
     }
 }

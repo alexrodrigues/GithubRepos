@@ -58,7 +58,6 @@ class ViewController: UIViewController {
     @objc func refresh() {
         fetch()
     }
-    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
