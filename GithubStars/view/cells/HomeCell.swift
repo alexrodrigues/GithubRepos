@@ -23,6 +23,11 @@ class HomeCell: UITableViewCell {
     }
     
     func setup(repo: RepoViewModel, index: Int) {
+        self.ownerImageView.isHidden = true
+        self.ownerImageView.image = nil
+        self.placeholderView.isHidden = false
+        self.activityIndicatorView.startAnimating()
+        
         ownerNameLabel.text = repo.ownerName
         repoNameLabel.text = repo.name
         totalStarsLabel.text = "Stars: \(repo.totalStars)"
