@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         registerCells()
         setupRefreshControl()
+        setupAccessibilityLabels()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -40,6 +41,10 @@ class ViewController: UIViewController {
     
     func fillDataOnTableView(models: [RepoViewModel]) {
         viewModels = models
+    }
+    
+    private func setupAccessibilityLabels() {
+        homeTableView.receiveAccessibilityIdentifier(identifier: .homeTableView)
     }
     
     private func registerCells() {
