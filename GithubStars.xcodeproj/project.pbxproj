@@ -30,6 +30,8 @@
 		04F64FA62205D95300B693E0 /* ViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F64FA52205D95300B693E0 /* ViewControllerSpec.swift */; };
 		04F64FA82205DBCC00B693E0 /* FactorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F64FA72205DBCC00B693E0 /* FactorySpec.swift */; };
 		04F64FAA2205E1BA00B693E0 /* ViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F64FA92205E1BA00B693E0 /* ViewModelSpec.swift */; };
+		04F72481222066CC00AFCC3B /* KifTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F72480222066CC00AFCC3B /* KifTests.swift */; };
+		04F724892220686C00AFCC3B /* KIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F724882220686C00AFCC3B /* KIF.framework */; };
 		04FE9F7122203FBD00845E52 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE9F7022203FBD00845E52 /* AccessibilityIdentifiers.swift */; };
 		04FE9F742220409F00845E52 /* UI+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE9F732220409F00845E52 /* UI+Accessibility.swift */; };
 		CFF2D637EEE219BCC0896DEF /* Pods_GithubStarsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F2A036EF8E84F4D44783A3 /* Pods_GithubStarsTests.framework */; };
@@ -46,6 +48,13 @@
 			remoteInfo = GithubStars;
 		};
 		04E8F13F220131E400527E72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04E8F117220131E200527E72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04E8F11E220131E200527E72;
+			remoteInfo = GithubStars;
+		};
+		04F72483222066CC00AFCC3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 04E8F117220131E200527E72 /* Project object */;
 			proxyType = 1;
@@ -85,6 +94,10 @@
 		04F64FA52205D95300B693E0 /* ViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSpec.swift; sourceTree = "<group>"; };
 		04F64FA72205DBCC00B693E0 /* FactorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactorySpec.swift; sourceTree = "<group>"; };
 		04F64FA92205E1BA00B693E0 /* ViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelSpec.swift; sourceTree = "<group>"; };
+		04F7247E222066CC00AFCC3B /* KifTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KifTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F72480222066CC00AFCC3B /* KifTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KifTests.swift; sourceTree = "<group>"; };
+		04F72482222066CC00AFCC3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04F724882220686C00AFCC3B /* KIF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KIF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FE9F7022203FBD00845E52 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		04FE9F732220409F00845E52 /* UI+Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Accessibility.swift"; sourceTree = "<group>"; };
 		06C300B18899976313D9B149 /* Pods_GithubStars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubStars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +135,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04F7247B222066CC00AFCC3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F724892220686C00AFCC3B /* KIF.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -147,6 +168,7 @@
 				04E8F121220131E200527E72 /* GithubStars */,
 				04E8F136220131E400527E72 /* GithubStarsTests */,
 				04E8F141220131E400527E72 /* GithubStarsUITests */,
+				04F7247F222066CC00AFCC3B /* KifTests */,
 				04E8F120220131E200527E72 /* Products */,
 				5D2B548BC2CEB59B4120ED84 /* Pods */,
 				86EA095C955AE7F14E8D646D /* Frameworks */,
@@ -159,6 +181,7 @@
 				04E8F11F220131E200527E72 /* GithubStars.app */,
 				04E8F133220131E400527E72 /* GithubStarsTests.xctest */,
 				04E8F13E220131E400527E72 /* GithubStarsUITests.xctest */,
+				04F7247E222066CC00AFCC3B /* KifTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,6 +306,15 @@
 			path = factory;
 			sourceTree = "<group>";
 		};
+		04F7247F222066CC00AFCC3B /* KifTests */ = {
+			isa = PBXGroup;
+			children = (
+				04F72480222066CC00AFCC3B /* KifTests.swift */,
+				04F72482222066CC00AFCC3B /* Info.plist */,
+			);
+			path = KifTests;
+			sourceTree = "<group>";
+		};
 		04FE9F6E22203CA300845E52 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +348,7 @@
 		86EA095C955AE7F14E8D646D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04F724882220686C00AFCC3B /* KIF.framework */,
 				06C300B18899976313D9B149 /* Pods_GithubStars.framework */,
 				85F2A036EF8E84F4D44783A3 /* Pods_GithubStarsTests.framework */,
 				274D534971124E9C738500D3 /* Pods_GithubStarsUITests.framework */,
@@ -373,6 +406,7 @@
 				04E8F13A220131E400527E72 /* Sources */,
 				04E8F13B220131E400527E72 /* Frameworks */,
 				04E8F13C220131E400527E72 /* Resources */,
+				9BE6439D8C2BE75C4142641E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -383,6 +417,24 @@
 			productName = GithubStarsUITests;
 			productReference = 04E8F13E220131E400527E72 /* GithubStarsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		04F7247D222066CC00AFCC3B /* KifTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F72487222066CC00AFCC3B /* Build configuration list for PBXNativeTarget "KifTests" */;
+			buildPhases = (
+				04F7247A222066CC00AFCC3B /* Sources */,
+				04F7247B222066CC00AFCC3B /* Frameworks */,
+				04F7247C222066CC00AFCC3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04F72484222066CC00AFCC3B /* PBXTargetDependency */,
+			);
+			name = KifTests;
+			productName = KifTests;
+			productReference = 04F7247E222066CC00AFCC3B /* KifTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -406,6 +458,10 @@
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 04E8F11E220131E200527E72;
 					};
+					04F7247D222066CC00AFCC3B = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 04E8F11E220131E200527E72;
+					};
 				};
 			};
 			buildConfigurationList = 04E8F11A220131E200527E72 /* Build configuration list for PBXProject "GithubStars" */;
@@ -424,6 +480,7 @@
 				04E8F11E220131E200527E72 /* GithubStars */,
 				04E8F132220131E400527E72 /* GithubStarsTests */,
 				04E8F13D220131E400527E72 /* GithubStarsUITests */,
+				04F7247D222066CC00AFCC3B /* KifTests */,
 			);
 		};
 /* End PBXProject section */
@@ -448,6 +505,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		04E8F13C220131E400527E72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F7247C222066CC00AFCC3B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -511,6 +575,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubStarsTests/Pods-GithubStarsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BE6439D8C2BE75C4142641E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GithubStarsUITests/Pods-GithubStarsUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KIF/KIF.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KIF.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubStarsUITests/Pods-GithubStarsUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9D05301CEBD34BDE683796B6 /* [CP] Embed Pods Frameworks */ = {
@@ -594,6 +676,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04F7247A222066CC00AFCC3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F72481222066CC00AFCC3B /* KifTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -606,6 +696,11 @@
 			isa = PBXTargetDependency;
 			target = 04E8F11E220131E200527E72 /* GithubStars */;
 			targetProxy = 04E8F13F220131E400527E72 /* PBXContainerItemProxy */;
+		};
+		04F72484222066CC00AFCC3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04E8F11E220131E200527E72 /* GithubStars */;
+			targetProxy = 04F72483222066CC00AFCC3B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -872,6 +967,46 @@
 			};
 			name = Release;
 		};
+		04F72485222066CC00AFCC3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HJ28CBRTR9;
+				INFOPLIST_FILE = KifTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alexrodrigues.KifTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubStars.app/GithubStars";
+			};
+			name = Debug;
+		};
+		04F72486222066CC00AFCC3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HJ28CBRTR9;
+				INFOPLIST_FILE = KifTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.alexrodrigues.KifTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubStars.app/GithubStars";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -907,6 +1042,15 @@
 			buildConfigurations = (
 				04E8F14E220131E400527E72 /* Debug */,
 				04E8F14F220131E400527E72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F72487222066CC00AFCC3B /* Build configuration list for PBXNativeTarget "KifTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F72485222066CC00AFCC3B /* Debug */,
+				04F72486222066CC00AFCC3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

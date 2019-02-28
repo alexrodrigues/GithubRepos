@@ -18,6 +18,7 @@ target 'GithubStars' do
 
   target 'GithubStarsUITests' do
     inherit! :search_paths
+    pod 'KIF', :configurations => ['Debug']
     # Pods for testing
   end
 
