@@ -7,19 +7,22 @@
 //
 
 import Foundation
+import RxSwift
 
 class GithubService {
     
     typealias RepoCompletion = (_ repos: [RepoViewModel], _ errorMesssage: String) -> Void
 
     func performFetch(completion: @escaping RepoCompletion) {
-        Api<GithubResponse>().requestObject(endpoint: .home) { (result) -> (Void) in
-            switch result {
-            case .success(let response):
-                completion(GithubResponseFactory().factor(githubResponse: response), "")
-            case .error(let errorMessage):
-                completion([RepoViewModel](), errorMessage)
+        _ = Api<GithubResponse>()
+            .requestRx(endpoint: .home)
+            .subscribe(onNext: { result in
+                completion(GithubResponseFactory().factor(githubResponse: result), "")
+            }, onError: { (error) in
+                completion([RepoViewModel](), error.localizedDescription)
+            }, onCompleted: {
+            }) {
             }
-        }
+        
     }
 }

@@ -12,6 +12,7 @@
 		0474FDA02203C7C400964102 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474FD9F2203C7C400964102 /* ImageService.swift */; };
 		04C70B022201B00100AFC558 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C70B012201B00100AFC558 /* Owner.swift */; };
 		04C830D522026F3600E13290 /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C830D422026F3600E13290 /* GithubService.swift */; };
+		04E01508222870F3001D7F76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E01507222870F3001D7F76 /* Extensions.swift */; };
 		04E8F123220131E200527E72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8F122220131E200527E72 /* AppDelegate.swift */; };
 		04E8F125220131E200527E72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8F124220131E200527E72 /* ViewController.swift */; };
 		04E8F128220131E200527E72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E8F126220131E200527E72 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		0474FD9F2203C7C400964102 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		04C70B012201B00100AFC558 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		04C830D422026F3600E13290 /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
+		04E01507222870F3001D7F76 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		04E8F11F220131E200527E72 /* GithubStars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E8F122220131E200527E72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04E8F124220131E200527E72 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,14 @@
 				0474FD9D2203BF8C00964102 /* HomeCell.swift */,
 			);
 			path = cells;
+			sourceTree = "<group>";
+		};
+		04E01509222870F7001D7F76 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04E01507222870F3001D7F76 /* Extensions.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		04E8F116220131E200527E72 = {
@@ -286,6 +296,7 @@
 		04FE9F6E22203CA300845E52 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				04E01509222870F7001D7F76 /* extensions */,
 				04FE9F6F22203CAE00845E52 /* accessibility */,
 			);
 			path = util;
@@ -499,7 +510,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GithubStarsTests/Pods-GithubStarsTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-GithubStarsTests/Pods-GithubStarsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -510,7 +521,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubStarsTests/Pods-GithubStarsTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GithubStarsTests/Pods-GithubStarsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9D05301CEBD34BDE683796B6 /* [CP] Embed Pods Frameworks */ = {
@@ -519,16 +530,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GithubStars/Pods-GithubStars-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-GithubStars/Pods-GithubStars-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubStars/Pods-GithubStars-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GithubStars/Pods-GithubStars-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D3370392EE2970CE1F0EC7AD /* [CP] Check Pods Manifest.lock */ = {
@@ -566,6 +583,7 @@
 				04C70B022201B00100AFC558 /* Owner.swift in Sources */,
 				04E8F15F220138A400527E72 /* Repo.swift in Sources */,
 				04FE9F7122203FBD00845E52 /* AccessibilityIdentifiers.swift in Sources */,
+				04E01508222870F3001D7F76 /* Extensions.swift in Sources */,
 				04E8F15B2201353800527E72 /* Endpoints.swift in Sources */,
 				04E8F123220131E200527E72 /* AppDelegate.swift in Sources */,
 				04E8F15D2201387F00527E72 /* GithubResponse.swift in Sources */,

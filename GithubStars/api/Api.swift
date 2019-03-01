@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 enum Result<T> {
     case success(T)
@@ -16,23 +17,26 @@ enum Result<T> {
 
 class Api<T: Decodable>  {
     
-    private let ERROR_MESSAGE = "Something went wrong on fetching repos"
-    
-    func requestObject(endpoint: Endpoints, completion: @escaping (Result<T>) -> (Void)) {
-        guard let url = URL(string: endpoint.rawValue)  else {
-            completion(.error(self.ERROR_MESSAGE))
-            return
-        }
-        request(url).responseJSON { (dataResponse) in
-            guard let dataReceived = dataResponse.data else {
-                completion(.error(self.ERROR_MESSAGE))
-                return
+    private var remoteTask: URLSessionTask!
+
+    func requestRx(endpoint: Endpoints) -> Observable<T> {
+        return Observable<T>.create{ observer -> Disposable in
+            request(URL(endpoint: .home)).responseJSON { (dataResponse) in
+                guard let dataReceived = dataResponse.data else {
+                    observer.onError(MyError(msg: "Something went wrong on fetching repos"))
+                    observer.onCompleted()
+                    return
+                }
+                do {
+                    let objectResponse = try JSONDecoder().decode(T.self, from: dataReceived)
+                    observer.onNext(objectResponse)
+                    observer.onCompleted()
+                } catch let error {
+                    observer.onError(MyError(msg: error.localizedDescription))
+                    observer.onCompleted()
+                }
             }
-            do {
-                let objectResponse = try JSONDecoder().decode(T.self, from: dataReceived)
-                completion(.success(objectResponse))
-            } catch {
-                completion(.error(self.ERROR_MESSAGE))
+            return Disposables.create {
             }
         }
     }
