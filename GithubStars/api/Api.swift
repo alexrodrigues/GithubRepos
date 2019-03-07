@@ -8,31 +8,38 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
-enum Result<T> {
-    case success(T)
-    case error(String)
+
+enum Endpoints: String {
+    case home = "https://api.github.com/search/repositories?q=language:swift&sort=stars"
 }
 
 class Api<T: Decodable>  {
     
-    private let ERROR_MESSAGE = "Something went wrong on fetching repos"
-    
-    func requestObject(endpoint: Endpoints, completion: @escaping (Result<T>) -> (Void)) {
-        guard let url = URL(string: endpoint.rawValue)  else {
-            completion(.error(self.ERROR_MESSAGE))
-            return
-        }
-        request(url).responseJSON { (dataResponse) in
-            guard let dataReceived = dataResponse.data else {
-                completion(.error(self.ERROR_MESSAGE))
-                return
+    private let session = SessionManager.default
+
+    func requestRx(endpoint: Endpoints) -> Observable<T> {
+        return Observable<T>.create{ observer -> Disposable in
+            let request = self.session.request(URL(endpoint: .home)).validate().responseData { (dataResponse) in
+                let result = dataResponse.result
+                switch result {
+                case .success(let dataReceived):
+                    do {
+                        let objectResponse = try JSONDecoder().decode(T.self, from: dataReceived)
+                        observer.onNext(objectResponse)
+                        observer.onCompleted()
+                    } catch let error {
+                        observer.onError(MyError(msg: error.localizedDescription))
+                        observer.onCompleted()
+                    }
+                case .failure(let error):
+                    observer.onError(MyError(msg: error.localizedDescription))
+                    observer.onCompleted()
+                }
             }
-            do {
-                let objectResponse = try JSONDecoder().decode(T.self, from: dataReceived)
-                completion(.success(objectResponse))
-            } catch {
-                completion(.error(self.ERROR_MESSAGE))
+            return Disposables.create {
+                request.cancel()
             }
         }
     }
