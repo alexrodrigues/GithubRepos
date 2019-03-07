@@ -10,33 +10,36 @@ import Foundation
 import Alamofire
 import RxSwift
 
-enum Result<T> {
-    case success(T)
-    case error(String)
+
+enum Endpoints: String {
+    case home = "https://api.github.com/search/repositories?q=language:swift&sort=stars"
 }
 
 class Api<T: Decodable>  {
     
-    private var remoteTask: URLSessionTask!
+    private let session = SessionManager.default
 
     func requestRx(endpoint: Endpoints) -> Observable<T> {
         return Observable<T>.create{ observer -> Disposable in
-            request(URL(endpoint: .home)).responseJSON { (dataResponse) in
-                guard let dataReceived = dataResponse.data else {
-                    observer.onError(MyError(msg: "Something went wrong on fetching repos"))
-                    observer.onCompleted()
-                    return
-                }
-                do {
-                    let objectResponse = try JSONDecoder().decode(T.self, from: dataReceived)
-                    observer.onNext(objectResponse)
-                    observer.onCompleted()
-                } catch let error {
+            let request = self.session.request(URL(endpoint: .home)).validate().responseData { (dataResponse) in
+                let result = dataResponse.result
+                switch result {
+                case .success(let dataReceived):
+                    do {
+                        let objectResponse = try JSONDecoder().decode(T.self, from: dataReceived)
+                        observer.onNext(objectResponse)
+                        observer.onCompleted()
+                    } catch let error {
+                        observer.onError(MyError(msg: error.localizedDescription))
+                        observer.onCompleted()
+                    }
+                case .failure(let error):
                     observer.onError(MyError(msg: error.localizedDescription))
                     observer.onCompleted()
                 }
             }
             return Disposables.create {
+                request.cancel()
             }
         }
     }
