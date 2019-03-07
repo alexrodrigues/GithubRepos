@@ -8,6 +8,8 @@
 
 import Quick
 import Nimble
+import RxSwift
+import RxCocoa
 @testable import GithubStars
 
 class ApiSpec: QuickSpec {
@@ -16,18 +18,17 @@ class ApiSpec: QuickSpec {
         describe("Testing API") {
             let api = Api<GithubResponse>()
             it("API response is OK", closure:  {
+                let disposeBag = DisposeBag()
+                var resultIsOk = false
                 waitUntil(timeout: 9.0, action: { (done) in
-                    api.requestObject(endpoint: .home, completion: { (result) -> (Void) in
-                        var resultIsOk = false
-                        switch result {
-                        case .success(_):
-                            resultIsOk = true
-                        case .error(_):
-                            resultIsOk = false
-                        }
-                        expect(resultIsOk).to(equal(true))
-                        done()
-                    })
+                    api.requestRx(endpoint: .home)
+                            .asObservable()
+                                .subscribe(onNext: { _ in
+                                    resultIsOk = true
+                                }, onCompleted: {
+                                    expect(resultIsOk).to(equal(true))
+                                    done()
+                                }).disposed(by: disposeBag)
                 })
             })
         }
