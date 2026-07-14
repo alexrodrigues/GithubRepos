@@ -8,41 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		0474FD9B2203BF6000964102 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0474FD9A2203BF6000964102 /* HomeCell.xib */; };
-		0474FD9E2203BF8C00964102 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0474FD9D2203BF8C00964102 /* HomeCell.swift */; };
 		04E01508222870F3001D7F76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E01507222870F3001D7F76 /* Extensions.swift */; };
 		04E8F123220131E200527E72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8F122220131E200527E72 /* AppDelegate.swift */; };
-		04E8F125220131E200527E72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8F124220131E200527E72 /* ViewController.swift */; };
 		04E8F128220131E200527E72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E8F126220131E200527E72 /* Main.storyboard */; };
 		04E8F12A220131E400527E72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E8F129220131E400527E72 /* Assets.xcassets */; };
 		04E8F12D220131E400527E72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E8F12B220131E400527E72 /* LaunchScreen.storyboard */; };
-		04ED1D552231A1AF00B52DB6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED1D542231A1AF00B52DB6 /* HomeViewModel.swift */; };
-		04F4B5DA2203BA300025C561 /* GithubResponseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F4B5D92203BA300025C561 /* GithubResponseFactory.swift */; };
-		04F4B5DC2203BAF00025C561 /* RepositoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F4B5DB2203BAF00025C561 /* RepositoryResponse.swift */; };
 		04FE9F7122203FBD00845E52 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE9F7022203FBD00845E52 /* AccessibilityIdentifiers.swift */; };
 		04FE9F742220409F00845E52 /* UI+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE9F732220409F00845E52 /* UI+Accessibility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0474FD9A2203BF6000964102 /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
-		0474FD9D2203BF8C00964102 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		04E01507222870F3001D7F76 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		04E8F11F220131E200527E72 /* GithubStars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E8F122220131E200527E72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04E8F124220131E200527E72 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04E8F127220131E200527E72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04E8F129220131E400527E72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E8F12C220131E400527E72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04E8F12E220131E400527E72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04ED1D542231A1AF00B52DB6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		04ED1D592231C7D600B52DB6 /* GithubStars-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStars-Bridging-Header.h"; sourceTree = "<group>"; };
-		04F4B5D92203BA300025C561 /* GithubResponseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubResponseFactory.swift; sourceTree = "<group>"; };
-		04F4B5DB2203BAF00025C561 /* RepositoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryResponse.swift; sourceTree = "<group>"; };
 		04FE9F7022203FBD00845E52 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		04FE9F732220409F00845E52 /* UI+Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Accessibility.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		04E3BD053006CA8200AC11E8 /* data */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = data; sourceTree = "<group>"; };
+		04E3BD673006D0E600AC11E8 /* designsystem */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = designsystem; sourceTree = "<group>"; };
+		04E3BD683006D0F000AC11E8 /* modules */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = modules; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,14 +53,6 @@
 				0474FD9A2203BF6000964102 /* HomeCell.xib */,
 			);
 			path = custom;
-			sourceTree = "<group>";
-		};
-		0474FD9C2203BF7300964102 /* cells */ = {
-			isa = PBXGroup;
-			children = (
-				0474FD9D2203BF8C00964102 /* HomeCell.swift */,
-			);
-			path = cells;
 			sourceTree = "<group>";
 		};
 		04E01509222870F7001D7F76 /* extensions */ = {
@@ -101,41 +84,13 @@
 			children = (
 				04ED1D592231C7D600B52DB6 /* GithubStars-Bridging-Header.h */,
 				04E8F122220131E200527E72 /* AppDelegate.swift */,
-				04E3BD053006CA8200AC11E8 /* data */,
-				04F4B5D82203BA180025C561 /* factory */,
-				04E8F1532201340600527E72 /* viewmodel */,
-				04E8F1542201341D00527E72 /* view */,
+				04E3BD673006D0E600AC11E8 /* designsystem */,
+				04E3BD683006D0F000AC11E8 /* modules */,
 				04E8F1562201343D00527E72 /* resources */,
 				04FE9F6E22203CA300845E52 /* util */,
 				04E8F12E220131E400527E72 /* Info.plist */,
 			);
 			path = GithubStars;
-			sourceTree = "<group>";
-		};
-		04E8F1532201340600527E72 /* viewmodel */ = {
-			isa = PBXGroup;
-			children = (
-				04F4B5DB2203BAF00025C561 /* RepositoryResponse.swift */,
-				04ED1D542231A1AF00B52DB6 /* HomeViewModel.swift */,
-			);
-			path = viewmodel;
-			sourceTree = "<group>";
-		};
-		04E8F1542201341D00527E72 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				0474FD9C2203BF7300964102 /* cells */,
-				04E8F1552201342E00527E72 /* controllers */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		04E8F1552201342E00527E72 /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				04E8F124220131E200527E72 /* ViewController.swift */,
-			);
-			path = controllers;
 			sourceTree = "<group>";
 		};
 		04E8F1562201343D00527E72 /* resources */ = {
@@ -155,14 +110,6 @@
 				04E8F126220131E200527E72 /* Main.storyboard */,
 			);
 			path = storyboard;
-			sourceTree = "<group>";
-		};
-		04F4B5D82203BA180025C561 /* factory */ = {
-			isa = PBXGroup;
-			children = (
-				04F4B5D92203BA300025C561 /* GithubResponseFactory.swift */,
-			);
-			path = factory;
 			sourceTree = "<group>";
 		};
 		04FE9F6E22203CA300845E52 /* util */ = {
@@ -199,7 +146,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				04E3BD053006CA8200AC11E8 /* data */,
+				04E3BD673006D0E600AC11E8 /* designsystem */,
+				04E3BD683006D0F000AC11E8 /* modules */,
 			);
 			name = GithubStars;
 			packageProductDependencies = (
@@ -264,14 +212,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FE9F742220409F00845E52 /* UI+Accessibility.swift in Sources */,
-				04F4B5DC2203BAF00025C561 /* RepositoryResponse.swift in Sources */,
-				04E8F125220131E200527E72 /* ViewController.swift in Sources */,
-				0474FD9E2203BF8C00964102 /* HomeCell.swift in Sources */,
 				04FE9F7122203FBD00845E52 /* AccessibilityIdentifiers.swift in Sources */,
 				04E01508222870F3001D7F76 /* Extensions.swift in Sources */,
 				04E8F123220131E200527E72 /* AppDelegate.swift in Sources */,
-				04ED1D552231A1AF00B52DB6 /* HomeViewModel.swift in Sources */,
-				04F4B5DA2203BA300025C561 /* GithubResponseFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +421,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
 	};
 	rootObject = 04E8F117220131E200527E72 /* Project object */;
 }
