@@ -12,8 +12,7 @@ import RxSwift
 
 final class ActivityTracker: SharedSequenceConvertibleType {
     
-    //swiftlint:disable:next type_name
-    typealias E = Bool
+    typealias Element = Bool
     typealias SharingStrategy = DriverSharingStrategy
     
     private let _lock = NSRecursiveLock()
@@ -25,7 +24,7 @@ final class ActivityTracker: SharedSequenceConvertibleType {
             .distinctUntilChanged()
     }
     
-    fileprivate func trackActivityOfObservable<O: ObservableConvertibleType>(_ source: O) -> Observable<O.E> {
+    fileprivate func trackActivityOfObservable<O: ObservableConvertibleType>(_ source: O) -> Observable<O.Element> {
         return source.asObservable()
             .do(onNext: { _ in
                 self.sendStopLoading()
@@ -48,14 +47,13 @@ final class ActivityTracker: SharedSequenceConvertibleType {
         _lock.unlock()
     }
     
-    func asSharedSequence() -> SharedSequence<SharingStrategy, E> {
+    func asSharedSequence() -> SharedSequence<SharingStrategy, Element> {
         return _loading
     }
 }
 
 extension ObservableConvertibleType {
-    func trackActivity(_ activityTracker: ActivityTracker) -> Observable<E> {
+    func trackActivity(_ activityTracker: ActivityTracker) -> Observable<Element> {
         return activityTracker.trackActivityOfObservable(self)
     }
 }
-

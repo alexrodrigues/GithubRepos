@@ -17,13 +17,12 @@ enum Endpoints: String {
 
 class Api<T: Decodable>  {
     
-    private let session = SessionManager.default
+    private let session = Session.default
 
     func requestRx(endpoint: Endpoints) -> Observable<T> {
         return Observable<T>.create{ observer -> Disposable in
             let request = self.session.request(URL(endpoint: .home)).validate().responseData { (dataResponse) in
-                let result = dataResponse.result
-                switch result {
+                switch dataResponse.result {
                 case .success(let dataReceived):
                     do {
                         let objectResponse = try JSONDecoder().decode(T.self, from: dataReceived)
