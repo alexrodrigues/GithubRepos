@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RepoViewModel {
+struct RepositoryResponse {
     
     var repository: Repo
     

@@ -10,10 +10,10 @@ import Foundation
 
 class GithubResponseFactory {
     
-    func factor(githubResponse: GithubResponse) -> [RepoViewModel] {
-        var response = [RepoViewModel]()
-        guard let repos = githubResponse.items else { return [RepoViewModel]() }
-        response = repos.map { RepoViewModel(repo: $0) }
+    func factor(githubResponse: GithubResponse) -> [RepositoryResponse] {
+        var response = [RepositoryResponse]()
+        guard let repos = githubResponse.items else { return [RepositoryResponse]() }
+        response = repos.map { RepositoryResponse(repo: $0) }
         return response
     }
 }

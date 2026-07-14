@@ -33,7 +33,7 @@ class HomeCell: UITableViewCell {
         activityIndicatorView.startAnimating()
     }
 
-    func setup(repo: RepoViewModel, index: Int) {
+    func setup(repo: RepositoryResponse, index: Int) {
         imageLoadTask?.cancel()
 
         ownerImageView.isHidden = true
