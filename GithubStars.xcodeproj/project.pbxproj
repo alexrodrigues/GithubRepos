@@ -21,7 +21,6 @@
 		04E8F129220131E400527E72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E8F12C220131E400527E72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04E8F12E220131E400527E72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04ED1D592231C7D600B52DB6 /* GithubStars-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GithubStars-Bridging-Header.h"; sourceTree = "<group>"; };
 		04FE9F7022203FBD00845E52 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		04FE9F732220409F00845E52 /* UI+Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Accessibility.swift"; sourceTree = "<group>"; };
 		A2000001223B000200000001 /* GithubStarsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubStarsApp.swift; sourceTree = "<group>"; };
@@ -70,7 +69,6 @@
 		04E8F121220131E200527E72 /* GithubStars */ = {
 			isa = PBXGroup;
 			children = (
-				04ED1D592231C7D600B52DB6 /* GithubStars-Bridging-Header.h */,
 				A2000001223B000200000001 /* GithubStarsApp.swift */,
 				04E3BD673006D0E600AC11E8 /* designsystem */,
 				04E3BD683006D0F000AC11E8 /* modules */,
@@ -347,7 +345,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.alexrodrigues.GithubStars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GithubStars/GithubStars-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -369,7 +366,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.alexrodrigues.GithubStars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GithubStars/GithubStars-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
