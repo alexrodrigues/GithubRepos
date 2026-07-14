@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-/// SwiftUI replacement for `HomeCell`.
 struct DefaultCell: View {
 
     let ownerName: String
@@ -21,11 +20,17 @@ struct DefaultCell: View {
             
             DefaultCellProfileImage(ownerImageURL: ownerImageURL)
             
-            VStack(alignment: .leading) {
-                Text(repoName)
-                Text(ownerName)
-                // TODO: stars label
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(repoName)
+                    Text(ownerName)
+                }
+                Spacer()
+                Text("\(totalStars) ★")
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(.secondary)
             }
+
         }
         .padding()
     }
