@@ -5,6 +5,7 @@
 [![SwiftUI](https://img.shields.io/badge/SwiftUI-enabled-007AFF?style=flat-square&logo=swift&logoColor=white)](https://developer.apple.com/xcode/swiftui/)
 [![TCA](https://img.shields.io/badge/TCA-1.26.0-black?style=flat-square)](https://github.com/pointfreeco/swift-composable-architecture)
 [![SPM](https://img.shields.io/badge/SPM-dependencies-F05138?style=flat-square&logo=swift&logoColor=white)](https://www.swift.org/package-manager/)
+[![CI](https://img.shields.io/github/actions/workflow/status/alexrodrigues/GithubRepos/unit-tests.yml?branch=master&label=CI&style=flat-square)](https://github.com/alexrodrigues/GithubRepos/actions/workflows/unit-tests.yml)
 [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-lightgrey?style=flat-square)](README.md#license)
 
 iOS app that lists popular Swift repositories from the [GitHub Search API](https://docs.github.com/en/rest/search/search). Built with SwiftUI, async/await, and [The Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture) (TCA).
@@ -90,7 +91,7 @@ The home screen is the first (and only) TCA feature. It follows unidirectional d
 `HomeFeature.Action` includes:
 
 - `.onAppear` / `.refresh` — trigger a fetch
-- `.fetchResponse(Result<...>)` — effect callback with success or failure
+- `.fetchResponseSuccess([RepositoryResponse])` / `.fetchResponseFailure(String)` — effect callbacks
 - `.onClick` — row tap (placeholder alert)
 - `.dismissError` — clear the alert
 
@@ -98,7 +99,7 @@ The home screen is the first (and only) TCA feature. It follows unidirectional d
 
 1. `HomeView` `.task` sends `.onAppear`.
 2. Reducer sets `isLoading = true` and returns a `.run` effect.
-3. Effect calls `githubClient.fetchRepos()` and sends `.fetchResponse`.
+3. Effect calls `githubClient.fetchRepos()` and sends `.fetchResponseSuccess` or `.fetchResponseFailure`.
 4. Reducer updates `repos` or `errorMessage`.
 5. View re-renders via `@Bindable var store`.
 
@@ -110,9 +111,12 @@ The home screen is the first (and only) TCA feature. It follows unidirectional d
 case .onAppear, .refresh:
     state.isLoading = true
     return .run { send in
-        await send(.fetchResponse(
-            Result { try await githubClient.fetchRepos() }
-        ))
+        do {
+            let repos = try await githubClient.fetchRepos()
+            await send(.fetchResponseSuccess(repos))
+        } catch {
+            await send(.fetchResponseFailure(error.localizedDescription))
+        }
     }
 ```
 
@@ -185,7 +189,7 @@ struct GithubStarsApp: App {
 
 - **Single feature** — No root `AppReducer` or multi-screen navigation yet.
 - **Row tap** — Shows a placeholder alert; no detail screen.
-- **No unit tests** — Test target was removed during the SPM/TCA migration.
+- **Unit tests** — `GithubStarsTests` covers `HomeFeature` (TCA `TestStore`) and `GithubResponseFactory`; CI runs tests and posts coverage on pull requests.
 - **Legacy removed** — CocoaPods, RxSwift, storyboard-based home, and UIKit `ViewController` are gone.
 - **Design system** — `DefaultCell` is a plain SwiftUI view, not a TCA sub-feature.
 

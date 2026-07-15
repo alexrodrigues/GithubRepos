@@ -18,11 +18,13 @@ struct HomeFeature {
         var errorMessage: String?
     }
 
-    enum Action {
+    @CasePathable
+    enum Action: Equatable {
         case onAppear
         case refresh
         case onClick
-        case fetchResponse(Result<[RepositoryResponse], any Error>)
+        case fetchResponseSuccess([RepositoryResponse])
+        case fetchResponseFailure(String)
         case dismissError
     }
 
@@ -35,25 +37,26 @@ struct HomeFeature {
                 state.isLoading = true
                 state.errorMessage = nil
                 return .run { send in
-                    await send(
-                        .fetchResponse(
-                            Result { try await githubClient.fetchRepos() }
-                        )
-                    )
+                    do {
+                        let repos = try await githubClient.fetchRepos()
+                        await send(.fetchResponseSuccess(repos))
+                    } catch {
+                        await send(.fetchResponseFailure(error.localizedDescription))
+                    }
                 }
-                
+
             case .onClick:
                 state.errorMessage = "Feature under construction 🚧"
                 return .none
 
-            case let .fetchResponse(.success(repos)):
+            case let .fetchResponseSuccess(repos):
                 state.isLoading = false
                 state.repos = repos
                 return .none
 
-            case let .fetchResponse(.failure(error)):
+            case let .fetchResponseFailure(message):
                 state.isLoading = false
-                state.errorMessage = error.localizedDescription
+                state.errorMessage = message
                 return .none
 
             case .dismissError:

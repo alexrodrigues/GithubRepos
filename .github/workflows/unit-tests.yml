@@ -1,0 +1,53 @@
+name: Unit Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+
+      - name: Resolve Swift Package dependencies
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project GithubStars.xcodeproj \
+            -scheme GithubStars \
+            -skipMacroValidation
+
+      - name: Run unit tests with coverage
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project GithubStars.xcodeproj \
+            -scheme GithubStars \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -enableCodeCoverage YES \
+            -resultBundlePath TestResults.xcresult \
+            -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Generate coverage comment
+        if: always()
+        run: |
+          chmod +x scripts/coverage-report.sh
+          scripts/coverage-report.sh TestResults.xcresult coverage-comment.md GithubStars
+
+      - name: Post coverage comment
+        if: github.event_name == 'pull_request' && always()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: coverage
+          path: coverage-comment.md

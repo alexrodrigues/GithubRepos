@@ -5,6 +5,10 @@
 ## Build generated
 build/
 DerivedData/
+TestResults/
+TestResults.xcresult/
+coverage.json
+coverage-comment.md
 *.DS_Store
 *.ruby-version
 
