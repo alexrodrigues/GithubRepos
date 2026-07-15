@@ -18,7 +18,24 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+        run: |
+          # Prefer 16.4 (macos-15 default) — matches installed iOS 18.5 simulators.
+          # Fall back to 16.2 or the Xcode.app symlink if the preferred app is absent.
+          for candidate in \
+            /Applications/Xcode_16.4.app \
+            /Applications/Xcode_16.2.app \
+            /Applications/Xcode.app
+          do
+            if [[ -d "$candidate" ]]; then
+              sudo xcode-select -s "$candidate/Contents/Developer"
+              echo "Selected Xcode: $candidate"
+              xcodebuild -version
+              exit 0
+            fi
+          done
+          echo "No supported Xcode found in /Applications" >&2
+          ls /Applications/Xcode*.app || true
+          exit 1
 
       - name: Resolve Swift Package dependencies
         run: |
@@ -33,7 +50,7 @@ jobs:
           xcodebuild test \
             -project GithubStars.xcodeproj \
             -scheme GithubStars \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.5' \
             -enableCodeCoverage YES \
             -resultBundlePath TestResults.xcresult \
             -skipMacroValidation \
@@ -46,7 +63,7 @@ jobs:
           scripts/coverage-report.sh TestResults.xcresult coverage-comment.md GithubStars
 
       - name: Post coverage comment
-        if: github.event_name == 'pull_request' && always()
+        if: github.event_name == 'pull_request' && always() && hashFiles('coverage-comment.md') != ''
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: coverage
