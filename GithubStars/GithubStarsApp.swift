@@ -6,6 +6,7 @@
 //  Copyright © 2026 Alex Rodrigues. All rights reserved.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 @main
@@ -13,7 +14,11 @@ struct GithubStarsApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                HomeView()
+                HomeView(
+                    store: Store(initialState: HomeFeature.State()) {
+                        HomeFeature()
+                    }
+                )
             }
         }
     }

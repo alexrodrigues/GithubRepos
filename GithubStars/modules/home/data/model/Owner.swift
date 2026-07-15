@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Owner: Codable {
+struct Owner: Codable, Equatable {
     
     var name: String?
     var profileImageUrl: String?

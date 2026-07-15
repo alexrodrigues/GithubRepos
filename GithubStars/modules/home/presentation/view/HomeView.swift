@@ -6,63 +6,65 @@
 //  Copyright © 2026 Alex Rodrigues. All rights reserved.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct HomeView: View {
-
-    private let viewModel = HomeViewModel()
-
-    @State private var repos: [RepositoryResponse] = []
-    @State private var isLoading = false
-    @State private var errorMessage: String?
-    @State private var showError = false
+    @Bindable var store: StoreOf<HomeFeature>
 
     var body: some View {
         Group {
-            if isLoading && repos.isEmpty {
+            if store.isLoading && store.repos.isEmpty {
                 ProgressView()
             } else {
-                List(repos.indices, id: \.self) { index in
-                    let repo = repos[index]
+                List(store.repos.indices, id: \.self) { index in
+                    let repo = store.repos[index]
                     DefaultCell(
                         ownerName: repo.ownerName,
                         repoName: repo.name,
                         totalStars: repo.totalStars,
                         ownerImageURL: repo.ownerImage
                     )
+                }.onTapGesture {
+                    store.send(.onClick)
                 }
             }
         }
         .navigationTitle("Github's repos")
         .task {
-            await loadRepos()
+            store.send(.onAppear)
         }
         .refreshable {
-            await loadRepos()
+            await store.send(.refresh).finish()
         }
-        .alert("Error", isPresented: $showError) {
-            Button("OK", role: .cancel) { }
+        .alert(
+            "Notice",
+            isPresented: Binding(
+                get: { store.errorMessage != nil },
+                set: { isPresented in
+                    if !isPresented {
+                        store.send(.dismissError)
+                    }
+                }
+            )
+        ) {
+            Button("OK", role: .cancel) {
+                store.send(.dismissError)
+            }
         } message: {
-            Text(errorMessage ?? "Something went wrong")
+            Text(store.errorMessage ?? "Something went wrong")
         }
-    }
-
-    private func loadRepos() async {
-        if repos.isEmpty {
-            isLoading = true
-        }
-        do {
-            repos = try await viewModel.fetch()
-        } catch {
-            errorMessage = error.localizedDescription
-            showError = true
-        }
-        isLoading = false
     }
 }
 
 #Preview {
     NavigationStack {
-        HomeView()
+        HomeView(
+            store: Store(initialState: HomeFeature.State()) {
+                HomeFeature()
+            } withDependencies: {
+                $0.githubClient = .previewValue
+            }
+        )
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RepositoryResponse {
+struct RepositoryResponse: Equatable {
     
     var repository: Repo
     
