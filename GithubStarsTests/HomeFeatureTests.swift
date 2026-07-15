@@ -77,4 +77,42 @@ final class HomeFeatureTests: XCTestCase {
             $0.errorMessage = nil
         }
     }
+
+    func testRefreshSuccessClearsPreviousError() async {
+        let store = TestStore(
+            initialState: HomeFeature.State(errorMessage: "Previous error")
+        ) {
+            HomeFeature()
+        } withDependencies: {
+            $0.githubClient.fetchRepos = { self.mockRepos }
+        }
+
+        await store.send(.refresh) {
+            $0.isLoading = true
+            $0.errorMessage = nil
+        }
+
+        await store.receive(\.fetchResponseSuccess) {
+            $0.isLoading = false
+            $0.repos = self.mockRepos
+        }
+    }
+
+    func testRefreshFailure() async {
+        let store = TestStore(initialState: HomeFeature.State(repos: mockRepos)) {
+            HomeFeature()
+        } withDependencies: {
+            $0.githubClient.fetchRepos = { throw URLError(.timedOut) }
+        }
+
+        await store.send(.refresh) {
+            $0.isLoading = true
+            $0.errorMessage = nil
+        }
+
+        await store.receive(\.fetchResponseFailure) {
+            $0.isLoading = false
+            $0.errorMessage = URLError(.timedOut).localizedDescription
+        }
+    }
 }
