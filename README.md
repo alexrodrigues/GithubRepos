@@ -1,5 +1,12 @@
 # GithubStars
 
+[![Swift](https://img.shields.io/badge/Swift-5.0-FA7343?style=flat-square&logo=swift&logoColor=white)](https://swift.org)
+[![Platform](https://img.shields.io/badge/Platform-iOS%2018.6+-007AFF?style=flat-square&logo=apple&logoColor=white)](https://developer.apple.com/ios/)
+[![SwiftUI](https://img.shields.io/badge/SwiftUI-enabled-007AFF?style=flat-square&logo=swift&logoColor=white)](https://developer.apple.com/xcode/swiftui/)
+[![TCA](https://img.shields.io/badge/TCA-1.26.0-black?style=flat-square)](https://github.com/pointfreeco/swift-composable-architecture)
+[![SPM](https://img.shields.io/badge/SPM-dependencies-F05138?style=flat-square&logo=swift&logoColor=white)](https://www.swift.org/package-manager/)
+[![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-lightgrey?style=flat-square)](README.md#license)
+
 iOS app that lists popular Swift repositories from the [GitHub Search API](https://docs.github.com/en/rest/search/search). Built with SwiftUI, async/await, and [The Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture) (TCA).
 
 ![Home screen listing Swift repositories sorted by stars](docs/screenshots/home.png)
